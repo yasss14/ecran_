@@ -1,18 +1,21 @@
 #include <Arduino.h>
+#include <TFT_eSPI.h>
 
-// put function declarations here:
-int myFunction(int, int);
+TFT_eSPI tft = TFT_eSPI();
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  delay(3000);
+
+  Serial.println("avant init");
+  tft.init();
+  Serial.println("apres init");
+
+  tft.setRotation(1);
+  Serial.println("apres rotation");
+
+  tft.fillScreen(TFT_RED);
+  Serial.println("apres fill");
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
+void loop() {}
